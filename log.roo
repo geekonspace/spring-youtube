@@ -1,0 +1,24 @@
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-17 12:28:52
+project --topLevelPackage ve.gob.iribarren.tube --projectName iribarren_tube --java 7 --packaging WAR
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-17 12:29:04
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-17 12:37:45
+hint
+jpa setup --provider HIBERNATE --database MYSQL --databaseName iribarren_tube --hostName localhost --userName root --password
+hint
+// [failed] database introspect --schema unable-to-obtain-connection
+osgi obr url add --url http://spring-roo-repository.springsource.org/repository.xml
+osgi obr start --bundleSymbolicName org.springframework.roo.wrapping.mysql-connector-java
+osgi obr url remove --url http://spring-roo-repository.springsource.org/repository.xml
+addon install id --searchResultId 01
+database reverse engineer --schema no-schema-required --activeRecord false --package ~.model --testAutomatically true
+repository jpa --entity ~.model.Category --interface ~.repository.CategoryRepository
+service type --entity ~.model.Category --interface ~.service.CategoryService
+repository jpa --entity ~.model.YoutubeCanal --interface ~.repository.YoutubeCanalRepository
+service type --entity ~.model.YoutubeCanal --interface ~.service.YoutubeCanalService
+repository jpa --entity ~.model.ConfigLiveJwplayer --interface ~.repository.ConfigLiveJwplayerRepository
+repository jpa --entity ~.model.Multimedia --interface ~.repository.MultimediaRepository
+service type --entity ~.model.ConfigLiveJwplayer --interface ~.service.ConfigLiveJwplayerService
+service type --entity ~.model.Multimedia --interface ~.service.MultimediaService
+// [failed] web mvc setup
+web mvc setup
+web mvc scaffold --backingType ~.model.Category --class ve.gob.iribarren.tube.web.CategoryController
