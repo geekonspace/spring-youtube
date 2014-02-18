@@ -32,11 +32,19 @@ body {
 	display: box;
 }
 
+#panel_left {
+	background: #eee;
+	position: relative;
+	float: left;
+	left: 0px;
+	width: 24%;
+}
+
 #main_public {
 	overflow: hidden;
 	display: box;
-	float: left;
-	width: 100%;
+	float: right;
+	width: 74%;
 }
 
 #menu {
@@ -409,7 +417,7 @@ There is no required CSS for this plugin to work properly // but here is what is
 	padding: 0;
 	margin: 0;
 	list-style-type: none;
-	background: #AAAAAB;	
+	background: #AAAAAB;
 	display: table;
 }
 
@@ -441,11 +449,13 @@ There is no required CSS for this plugin to work properly // but here is what is
 }
 
 .horizontal-nav ul li:first-child a {
-/* 	border-top-left-radius: 6px;
+	/* 	border-top-left-radius: 6px;
 	border-bottom-left-radius: 6px; */
+	
 }
 
 .horizontal-nav ul li:last-child a {
-/* 	border-top-right-radius: 6px;
+	/* 	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px; */
+	
 }

@@ -13,7 +13,8 @@
 
   <definition name="public" template="/WEB-INF/layouts/public.jspx">
     <put-attribute name="header" value="/WEB-INF/views/header.jspx" />
-    <put-attribute name="menu" value="/WEB-INF/views/menu-jquery.jspx" />    
+    <put-attribute name="menu" value="/WEB-INF/views/menu-jquery.jspx" />
+    <put-attribute name="panel_left" value="/WEB-INF/views/panel_left.jspx" />          
     <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
   </definition>
 

@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-        <menu:category id="c_category" z="kY676wLbZKc59UbcUGM8ogjOGOc=">
-            <menu:item id="i_category_new" messageCode="global_menu_new" url="/categories?form"/>
-            <menu:item id="i_category_list" messageCode="global_menu_list" url="/categories?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
-        </menu:category>
-        <menu:category id="c_configlivejwplayer" z="g1RkG9kO09HsUU80EXV9aS93tXw=">
-            <menu:item id="i_configlivejwplayer_new" messageCode="global_menu_new" url="/configlivejwplayers?form" z="LyB7fwBMxzUkJAdFGKoIWOIlvz0="/>
-            <menu:item id="i_configlivejwplayer_list" messageCode="global_menu_list" url="/configlivejwplayers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="BoD5Z5xMx9EcuRcmJCyEHEFiqKQ="/>
-        </menu:category>
-        <menu:category id="c_youtubecanal" z="mrSTeuGHOGdwK6pGrxMNDYx0P1o=">
-            <menu:item id="i_youtubecanal_new" messageCode="global_menu_new" url="/youtubecanals?form" z="SiqdqstXJv/Wy8kyo7EmozL6E9E="/>
-            <menu:item id="i_youtubecanal_list" messageCode="global_menu_list" url="/youtubecanals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="DKvjb5Wc9wRwgkXQx7b/VQGv2Ho="/>
-        </menu:category>
-        <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8=">
-            <menu:item id="i_controller__inicioindex_id" messageCode="global_generic" url="/inicio/index" z="O02YRJSzKDd6mX2rM8lBgnstteA="/>
-        </menu:category>
-    </menu:menu>
+    <c:choose>
+        <c:when test="${pageContext['request'].userPrincipal != null}">
+            <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+                <menu:category id="c_category" z="kY676wLbZKc59UbcUGM8ogjOGOc=">
+                    <menu:item id="i_category_new" messageCode="global_menu_new" url="/categories?form"/>
+                    <menu:item id="i_category_list" messageCode="global_menu_list" url="/categories?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+                </menu:category>
+                <menu:category id="c_configlivejwplayer" z="g1RkG9kO09HsUU80EXV9aS93tXw=">
+                    <menu:item id="i_configlivejwplayer_new" messageCode="global_menu_new" url="/configlivejwplayers?form" z="LyB7fwBMxzUkJAdFGKoIWOIlvz0="/>
+                    <menu:item id="i_configlivejwplayer_list" messageCode="global_menu_list" url="/configlivejwplayers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="BoD5Z5xMx9EcuRcmJCyEHEFiqKQ="/>
+                </menu:category>
+                <menu:category id="c_youtubecanal" z="mrSTeuGHOGdwK6pGrxMNDYx0P1o=">
+                    <menu:item id="i_youtubecanal_new" messageCode="global_menu_new" url="/youtubecanals?form" z="SiqdqstXJv/Wy8kyo7EmozL6E9E="/>
+                    <menu:item id="i_youtubecanal_list" messageCode="global_menu_list" url="/youtubecanals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="DKvjb5Wc9wRwgkXQx7b/VQGv2Ho="/>
+                </menu:category>
+                <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8=">
+                    <menu:item id="i_controller__inicioindex_id" messageCode="global_generic" url="/inicio/index" z="O02YRJSzKDd6mX2rM8lBgnstteA="/>
+                    <menu:item id="i_controller__videosindex_id" messageCode="global_generic" url="/videos/index" z="usLgdCCUMBeMPS0dIeaDvIOQgLo="/>
+                    <menu:item id="i_controller__audiosindex_id" messageCode="global_generic" url="/audios/index" z="Ly3UQLDvQs91PKmBBg9RkyITbgU="/>
+                    <menu:item id="i_controller__radioindex_id" messageCode="global_generic" url="/radio/index" z="wflWk9HHNIT3hIHFP9yePCihI0w="/>
+                    <menu:item id="i_controller__tvindex_id" messageCode="global_generic" url="/tv/index" z="71nkxsN9khTdBWeU9reY8OXGkrA="/>
+                    <menu:item id="i_controller__youtubeindex_id" messageCode="global_generic" url="/youtube/index" z="fRWa6DlpoO+c535wNRtavqZQmy8="/>
+                </menu:category>
+            </menu:menu>
+        </c:when>
+    </c:choose>
 </div>

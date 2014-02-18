@@ -10,7 +10,6 @@
     </a>
   </span>
   <c:choose>
-  
   <c:when test="${pageContext['request'].userPrincipal != null}">
     <c:out value=" | "/>
     <span>
@@ -29,19 +28,8 @@
       </a>
     </span>  
   </c:otherwise>
-  
   </c:choose>
   
-  <c:if test="${pageContext['request'].userPrincipal != null}">
-    <c:out value=" | "/>
-    <span>
-      <spring:url value="/resources/j_spring_security_logout" var="logout"/>
-      <a href="${logout}">
-        <spring:message code="security_logout"/>
-      </a>
-    </span>
-  </c:if>
-
   <span id="language">
     <c:out value=" | "/>
     <spring:message code="global_language"/>
