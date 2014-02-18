@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu_jquery" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-<script type="text/javascript">
-//<![CDATA[
-  $(document).ready(function() {
-    //$('.full-width').horizontalNav();
-  });
-//]]>
-</script>
-<div class="horizontal-nav">
-  <ul>
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Videos</a></li>
-    <li><a href="#">Audios</a></li>
-    <li><a href="#">Radio</a></li>
-    <li><a href="#">TV</a></li>
-    <li><a href="#">Youtube</a></li>
-  </ul>
-</div>
-<br></br>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu_jquery"
+	version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<script type="text/javascript">
+		//<![CDATA[
+		$(document).ready(function() {
+			//$('.full-width').horizontalNav();
+		});
+		//]]>
+	</script>
+	<div class="horizontal-nav">
+		<ul>
+			<menu:item url="/" id="menu_inicio" label="Inicio"></menu:item>
+			<menu:item url="/videos" id="menu_videos" label="Videos"></menu:item>
+			<menu:item url="/audios" id="menu_audios" label="Audios"></menu:item>
+			<menu:item url="/radio" id="menu_radio" label="Radio"></menu:item>
+			<menu:item url="/tv" id="menu_tv" label="TV"></menu:item>
+			<menu:item url="/youtube" id="menu_youtube" label="Youtube"></menu:item>
+		</ul>
+	</div>
+	<br></br>
 </div>

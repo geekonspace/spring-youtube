@@ -1,9 +1,11 @@
+/**
+ * COPYRIGHT (C) 2014 Alcaldía de Iribarren. Todos los derechos reservados.
+ */
 package ve.gob.iribarren.tube.web;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,9 +18,14 @@ import org.springframework.web.util.WebUtils;
 import ve.gob.iribarren.tube.model.Category;
 import ve.gob.iribarren.tube.repository.CategoryRepository;
 
+/**
+ * 
+ * @author Williams Rivas
+ * Created 18/02/2014 14:09:00
+ *
+ */
 @RequestMapping("/categories")
 @Controller
-@RooWebScaffold(path = "categories", formBackingObject = Category.class)
 public class CategoryController {
 
 	@Autowired

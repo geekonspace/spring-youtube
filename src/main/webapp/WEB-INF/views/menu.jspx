@@ -15,5 +15,8 @@
             <menu:item id="i_youtubecanal_new" messageCode="global_menu_new" url="/youtubecanals?form" z="SiqdqstXJv/Wy8kyo7EmozL6E9E="/>
             <menu:item id="i_youtubecanal_list" messageCode="global_menu_list" url="/youtubecanals?page=1&amp;size=${empty param.size ? 10 : param.size}" z="DKvjb5Wc9wRwgkXQx7b/VQGv2Ho="/>
         </menu:category>
+        <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8=">
+            <menu:item id="i_controller__inicioindex_id" messageCode="global_generic" url="/inicio/index" z="O02YRJSzKDd6mX2rM8lBgnstteA="/>
+        </menu:category>
     </menu:menu>
 </div>

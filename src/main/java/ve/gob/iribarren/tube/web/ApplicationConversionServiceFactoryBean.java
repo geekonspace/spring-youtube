@@ -1,3 +1,6 @@
+/**
+ * COPYRIGHT (C) 2014 Alcaldía de Iribarren. Todos los derechos reservados.
+ */
 package ve.gob.iribarren.tube.web;
 
 import org.springframework.format.FormatterRegistry;
@@ -5,7 +8,12 @@ import org.springframework.format.support.FormattingConversionServiceFactoryBean
 import org.springframework.roo.addon.web.mvc.controller.converter.RooConversionService;
 
 /**
+ * 
+ * @author Williams Rivas
+ * Created 18/02/2014 14:08:14
+ *
  * A central place to register application converters and formatters. 
+ *
  */
 @RooConversionService
 public class ApplicationConversionServiceFactoryBean extends FormattingConversionServiceFactoryBean {

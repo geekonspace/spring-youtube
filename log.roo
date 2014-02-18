@@ -28,3 +28,5 @@ enum type --class ve.gob.iribarren.tube.enums.MediaType
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-17 15:59:40
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-18 08:53:59
 security setup
+// [failed] controller class --class ~.web.InicioController --preferredMapping /
+controller class --class ~.web.InicioController --preferredMapping /inicio
