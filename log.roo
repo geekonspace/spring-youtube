@@ -22,3 +22,9 @@ service type --entity ~.model.Multimedia --interface ~.service.MultimediaService
 // [failed] web mvc setup
 web mvc setup
 web mvc scaffold --backingType ~.model.Category --class ve.gob.iribarren.tube.web.CategoryController
+web mvc scaffold --backingType ~.model.ConfigLiveJwplayer --class ~.web.ConfigLiveJwplayerController
+web mvc scaffold --backingType ~.model.YoutubeCanal --class ~.web.YoutubeCanalController
+enum type --class ve.gob.iribarren.tube.enums.MediaType
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-17 15:59:40
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-18 08:53:59
+security setup

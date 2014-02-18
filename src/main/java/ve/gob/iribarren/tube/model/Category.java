@@ -16,7 +16,7 @@ import org.springframework.roo.addon.jpa.entity.RooJpaEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 
 /**
- * 
+ *
  * @author Williams Rivas
  * Created 17/02/2014 13:56:57
  *
@@ -29,43 +29,43 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooToString(excludeFields = { "categoryMultimedias" })
 public class Category {
 
-	public String toString() {
+    public String toString() {
         return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames("categoryMultimedias").toString();
     }
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-	public Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-	@OneToMany(mappedBy = "categoryId")
+    @OneToMany(mappedBy = "categoryId")
     private Set<CategoryMultimedia> categoryMultimedias;
 
-	@Column(name = "name", length = 45, unique = true)
+    @Column(name = "name", length = 45, unique = true)
     @NotNull
     private String name;
 
-	public Set<CategoryMultimedia> getCategoryMultimedias() {
+    public Set<CategoryMultimedia> getCategoryMultimedias() {
         return categoryMultimedias;
     }
 
-	public void setCategoryMultimedias(Set<CategoryMultimedia> categoryMultimedias) {
+    public void setCategoryMultimedias(Set<CategoryMultimedia> categoryMultimedias) {
         this.categoryMultimedias = categoryMultimedias;
     }
 
-	public String getName() {
+    public String getName() {
         return name;
     }
 
-	public void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }

@@ -4,7 +4,12 @@
 
   <spring:theme code="styleSheet" var="roo_css" />
   <spring:url value="/${roo_css}" var="roo_css_url" />
+  
+
   <spring:url value="/resources/dojo/dojo.js" var="dojo_url" />
+  <spring:url value="/resources/jquery/jquery-1.11.0-dev.js" var="jquery_core_url" />  
+  <spring:url value="/resources/jquery/jquery.horizontalNav.js" var="jquery_menu_url" />
+  
   <spring:url value="/resources/dijit/themes/tundra/tundra.css" var="tundra_url" />
   <spring:url value="/resources/spring/Spring.js" var="spring_url" />
   <spring:url value="/resources/spring/Spring-Dojo.js" var="spring_dojo_url" />
@@ -21,9 +26,32 @@
 
   <script type="text/javascript">var djConfig = {parseOnLoad: false, isDebug: false, locale: '${fn:toLowerCase(userLocale)}'};</script>
 
+
+  
   <script src="${dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
   <script src="${spring_url}" type="text/javascript"><!-- /required for FF3 and Opera --></script>
   <script src="${spring_dojo_url}" type="text/javascript"><!-- required for FF3 and Opera --></script>
-  <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");</script>
-
+  
+  <script src="${jquery_core_url}" type="text/javascript"></script>
+  <script src="${jquery_menu_url}" type="text/javascript"></script>  
+    
+  <script language="JavaScript" type="text/javascript">
+		dojo.require("dojo.parser");
+		dojo.require("dijit.layout.AccordionContainer");
+		dojo.require("dijit.layout.AccordionPane");
+		dojo.require("dijit.layout.TabContainer");		
+		dojo.require("dijit.layout.ContentPane");
+		dojo.require("dijit.Tree");
+		dojo.require("dojo.data.ItemFileReadStore");  
+		dojo.require("dojo.data.ItemFileWriteStore");  
+		//dojo.require("dijit.DropDownMenu");
+		dojo.require("dijit.MenuItem");  
+		dojo.require("dijit.MenuSeparator"); 
+		dojo.require("dijit.PopupMenuItem");   
+		dojo.require("dijit.MenuBar"); 
+		dojo.require("dijit.MenuBarItem");
+		dojo.require("dijit.PopupMenuBarItem");  
+		dojo.require("dijit.form.Button");
+		dojo.require("dijit.Menu");
+  </script> 
 </jsp:root>

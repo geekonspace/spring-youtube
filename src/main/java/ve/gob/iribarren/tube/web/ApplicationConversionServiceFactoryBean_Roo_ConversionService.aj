@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
 import ve.gob.iribarren.tube.model.Category;
+import ve.gob.iribarren.tube.model.ConfigLiveJwplayer;
+import ve.gob.iribarren.tube.model.YoutubeCanal;
 import ve.gob.iribarren.tube.repository.CategoryRepository;
+import ve.gob.iribarren.tube.repository.ConfigLiveJwplayerRepository;
+import ve.gob.iribarren.tube.repository.YoutubeCanalRepository;
 import ve.gob.iribarren.tube.web.ApplicationConversionServiceFactoryBean;
 
 privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService {
@@ -17,6 +21,12 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     @Autowired
     CategoryRepository ApplicationConversionServiceFactoryBean.categoryRepository;
+    
+    @Autowired
+    ConfigLiveJwplayerRepository ApplicationConversionServiceFactoryBean.configLiveJwplayerRepository;
+    
+    @Autowired
+    YoutubeCanalRepository ApplicationConversionServiceFactoryBean.youtubeCanalRepository;
     
     public Converter<Category, String> ApplicationConversionServiceFactoryBean.getCategoryToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<ve.gob.iribarren.tube.model.Category, java.lang.String>() {
@@ -42,10 +52,64 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<ConfigLiveJwplayer, String> ApplicationConversionServiceFactoryBean.getConfigLiveJwplayerToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<ve.gob.iribarren.tube.model.ConfigLiveJwplayer, java.lang.String>() {
+            public String convert(ConfigLiveJwplayer configLiveJwplayer) {
+                return new StringBuilder().append(configLiveJwplayer.getUrl()).append(' ').append(configLiveJwplayer.getStreamer()).append(' ').append(configLiveJwplayer.getWidth()).append(' ').append(configLiveJwplayer.getHeigth()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, ConfigLiveJwplayer> ApplicationConversionServiceFactoryBean.getIdToConfigLiveJwplayerConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, ve.gob.iribarren.tube.model.ConfigLiveJwplayer>() {
+            public ve.gob.iribarren.tube.model.ConfigLiveJwplayer convert(java.lang.Long id) {
+                return configLiveJwplayerRepository.findOne(id);
+            }
+        };
+    }
+    
+    public Converter<String, ConfigLiveJwplayer> ApplicationConversionServiceFactoryBean.getStringToConfigLiveJwplayerConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, ve.gob.iribarren.tube.model.ConfigLiveJwplayer>() {
+            public ve.gob.iribarren.tube.model.ConfigLiveJwplayer convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), ConfigLiveJwplayer.class);
+            }
+        };
+    }
+    
+    public Converter<YoutubeCanal, String> ApplicationConversionServiceFactoryBean.getYoutubeCanalToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<ve.gob.iribarren.tube.model.YoutubeCanal, java.lang.String>() {
+            public String convert(YoutubeCanal youtubeCanal) {
+                return new StringBuilder().append(youtubeCanal.getName()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, YoutubeCanal> ApplicationConversionServiceFactoryBean.getIdToYoutubeCanalConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, ve.gob.iribarren.tube.model.YoutubeCanal>() {
+            public ve.gob.iribarren.tube.model.YoutubeCanal convert(java.lang.Long id) {
+                return youtubeCanalRepository.findOne(id);
+            }
+        };
+    }
+    
+    public Converter<String, YoutubeCanal> ApplicationConversionServiceFactoryBean.getStringToYoutubeCanalConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, ve.gob.iribarren.tube.model.YoutubeCanal>() {
+            public ve.gob.iribarren.tube.model.YoutubeCanal convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), YoutubeCanal.class);
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getCategoryToStringConverter());
         registry.addConverter(getIdToCategoryConverter());
         registry.addConverter(getStringToCategoryConverter());
+        registry.addConverter(getConfigLiveJwplayerToStringConverter());
+        registry.addConverter(getIdToConfigLiveJwplayerConverter());
+        registry.addConverter(getStringToConfigLiveJwplayerConverter());
+        registry.addConverter(getYoutubeCanalToStringConverter());
+        registry.addConverter(getIdToYoutubeCanalConverter());
+        registry.addConverter(getStringToYoutubeCanalConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

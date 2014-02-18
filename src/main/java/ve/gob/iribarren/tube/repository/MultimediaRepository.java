@@ -1,7 +1,6 @@
 package ve.gob.iribarren.tube.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.roo.addon.layers.repository.jpa.RooJpaRepository;
 import org.springframework.stereotype.Repository;
 import ve.gob.iribarren.tube.model.Multimedia;
 
@@ -12,6 +11,5 @@ import ve.gob.iribarren.tube.model.Multimedia;
  *
  */
 @Repository
-@RooJpaRepository(domainType = Multimedia.class)
 public interface MultimediaRepository extends JpaSpecificationExecutor<Multimedia>, JpaRepository<Multimedia, Long> {
 }

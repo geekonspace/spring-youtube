@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu_jquery" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+<script type="text/javascript">
+//<![CDATA[
+  $(document).ready(function() {
+    //$('.full-width').horizontalNav();
+  });
+//]]>
+</script>
+<div class="horizontal-nav">
+  <ul>
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Videos</a></li>
+    <li><a href="#">Audios</a></li>
+    <li><a href="#">Radio</a></li>
+    <li><a href="#">TV</a></li>
+    <li><a href="#">Youtube</a></li>
+  </ul>
+</div>
+<br></br>
+</div>

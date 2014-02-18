@@ -367,3 +367,71 @@ fieldset th {
 	height: 11px;
 	width: 16px;
 }
+
+
+/*menu jquery*/
+#menu_jquery {
+	/* background: #AAAAAB; */
+	position: relative;
+	float: left;
+	left: 0px;
+	width: 100%;
+	margin-right: 15px;
+	margin-bottom: 1em;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+//
+There is no required CSS for this plugin to work properly // but here is what is being used to style this demo
+.horizontal-nav {
+	border-radius: 6px;
+	min-width: 800px;
+}
+
+.horizontal-nav ul {
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	background: #AAAAAB;	
+}
+
+.horizontal-nav ul li {
+	float: left;
+	border-left: 1px solid #949496;
+}
+
+.horizontal-nav ul li:first-child {
+	border-left: 0 none;
+}
+
+.horizontal-nav ul li a {
+	display: block;
+	padding: 10px 20px;
+	color: #fff;
+	border-top: 1px solid rgba(255, 255, 255, 0.25);
+	border-left: 1px solid rgba(255, 255, 255, 0.25);
+	text-decoration: none;
+}
+
+.horizontal-nav ul li:first-child a {
+	border-left: 0 none;
+}
+
+.horizontal-nav ul li a:hover {
+	background: #525256;
+}
+
+.horizontal-nav ul li:first-child a {
+/* 	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px; */
+}
+
+.horizontal-nav ul li:last-child a {
+/* 	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px; */
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_ve_gob_iribarren_tube_model_ConfigLiveJwplayer" object="${configlivejwplayer}" path="/configlivejwplayers" z="DyjV5u9ID4/x84ECZikgAizDHwI=">
+        <field:display field="url" id="s_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_url" object="${configlivejwplayer}" z="cRzZDpKbURXp4IXa4/V9DopnY7Q="/>
+        <field:display field="streamer" id="s_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_streamer" object="${configlivejwplayer}" z="Zq/PGpEJ0RsJt1oODsJcs1+Sm64="/>
+        <field:display field="width" id="s_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_width" object="${configlivejwplayer}" z="KBbOBp2pSnjgFGlW7ofyWf/jgRY="/>
+        <field:display field="heigth" id="s_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_heigth" object="${configlivejwplayer}" z="B+ylXGMcUQ6B+rDt9nkPncBBbE0="/>
+        <field:display field="type" id="s_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_type" object="${configlivejwplayer}" z="QJg2SFrxtSqBO6AspqXFtrVWPk4="/>
+        <field:display field="description" id="s_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_description" object="${configlivejwplayer}" z="njtgpv7pIP/MQSLCiMYRBGa45Yg="/>
+    </page:show>
+</div>

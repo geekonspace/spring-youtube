@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_ve_gob_iribarren_tube_model_ConfigLiveJwplayer" items="${configlivejwplayers}" z="ikaxBAaoSurDHr/32COPxoW2PfE=">
+        <table:table data="${configlivejwplayers}" id="l_ve_gob_iribarren_tube_model_ConfigLiveJwplayer" path="/configlivejwplayers" z="be5TBNduKzK6vtuNwIbEzhKyMzo=">
+            <table:column id="c_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_url" property="url" z="iixxxFEaIVGeUoWeE8bcQCIHeGQ="/>
+            <table:column id="c_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_streamer" property="streamer" z="oLvhR5hRD4dEoTW5rG7diI97WSI="/>
+            <table:column id="c_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_width" property="width" z="4b/Nc2uDyUMAZ796tHlgbYN8C1Q="/>
+            <table:column id="c_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_heigth" property="heigth" z="/mx5SxxPPmHQHubLvK14Qip038M="/>
+            <table:column id="c_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_type" property="type" z="40CsxoNceWVmyktwaivB82UJn0c="/>
+            <table:column id="c_ve_gob_iribarren_tube_model_ConfigLiveJwplayer_description" property="description" z="DUZJ8/16ZsRgjxDvlORZGbfg5KU="/>
+        </table:table>
+    </page:list>
+</div>

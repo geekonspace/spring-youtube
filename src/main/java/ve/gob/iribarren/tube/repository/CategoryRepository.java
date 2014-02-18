@@ -1,7 +1,6 @@
 package ve.gob.iribarren.tube.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.roo.addon.layers.repository.jpa.RooJpaRepository;
 import org.springframework.stereotype.Repository;
 import ve.gob.iribarren.tube.model.Category;
 
@@ -12,7 +11,6 @@ import ve.gob.iribarren.tube.model.Category;
  *
  */
 @Repository
-@RooJpaRepository(domainType = Category.class)
 public interface CategoryRepository extends JpaSpecificationExecutor<Category>, JpaRepository<Category, Long> {
 	
 }

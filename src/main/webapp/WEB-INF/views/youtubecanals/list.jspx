@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_ve_gob_iribarren_tube_model_YoutubeCanal" items="${youtubecanals}" z="y6b57Z7z08n2rud2D7tv2Zw3iFE=">
+        <table:table data="${youtubecanals}" id="l_ve_gob_iribarren_tube_model_YoutubeCanal" path="/youtubecanals" z="4Vd81QKFaD6LyaOuSWjrVHrR9pQ=">
+            <table:column id="c_ve_gob_iribarren_tube_model_YoutubeCanal_name" property="name" z="Yo/ilyGTiq7jpMeIpS3CjrI7OQ4="/>
+        </table:table>
+    </page:list>
+</div>
