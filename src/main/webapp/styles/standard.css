@@ -32,6 +32,7 @@ body {
 	display: box;
 }
 
+/*panel left*/
 #panel_left {
 	background: #eee;
 	position: relative;
@@ -39,6 +40,44 @@ body {
 	left: 0px;
 	width: 24%;
 }
+
+#panel_left ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#panel_left ul li {
+	padding: 0px;
+}
+
+#panel_left a,#menu h2 {
+	display: block;
+	margin: 0;
+	padding: 2px 6px;
+	color: #FFFFFF;
+}
+
+#panel_left h2 {
+	color: #fff;
+	background: #648C1D;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+#panel_left a {
+	color: #666666;
+	background: #efefef;
+	text-decoration: none;
+	padding: 2px 12px;
+}
+
+#panel_left a:hover {
+	color: #648C1D;
+	background: #fff;
+}
+/*panel left*/
 
 #main_public {
 	overflow: hidden;

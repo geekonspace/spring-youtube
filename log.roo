@@ -30,3 +30,9 @@ enum type --class ve.gob.iribarren.tube.enums.MediaType
 security setup
 // [failed] controller class --class ~.web.InicioController --preferredMapping /
 controller class --class ~.web.InicioController --preferredMapping /inicio
+controller class --class ~.web.VideosController --preferredMapping /videos
+controller class --class ~.web.AudiosController --preferredMapping /audios
+controller class --class ~.web.RadioController --preferredMapping /radio
+controller class --class ~.web.TvController --preferredMapping /tv
+controller class --class ~.web.YoutubeController --preferredMapping /youtube
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-18 15:56:00

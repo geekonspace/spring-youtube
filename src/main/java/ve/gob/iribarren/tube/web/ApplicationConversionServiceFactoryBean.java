@@ -12,7 +12,7 @@ import org.springframework.roo.addon.web.mvc.controller.converter.RooConversionS
  * @author Williams Rivas
  * Created 18/02/2014 14:08:14
  *
- * A central place to register application converters and formatters. 
+ * El lugar central para registrar convertidores y formateadores de la aplicacion. 
  *
  */
 @RooConversionService
