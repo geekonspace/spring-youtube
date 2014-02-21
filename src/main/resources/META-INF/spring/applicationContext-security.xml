@@ -15,6 +15,7 @@
         <intercept-url pattern="/categories/**" access="isAuthenticated()" />
         <intercept-url pattern="/configlivejwplayers/**" access="isAuthenticated()" />
         <intercept-url pattern="/youtubecanals/**" access="isAuthenticated()" />
+        <intercept-url pattern="/prensa/**" access="hasRole('ROLE_ADMIN')" />
         
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/login/**" access="permitAll" />

@@ -14,7 +14,7 @@ import org.springframework.roo.addon.jpa.entity.RooJpaEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 
 /**
- * 
+ *
  * @author Williams Rivas
  * Created 17/02/2014 14:01:41
  *
@@ -27,32 +27,44 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooDbManaged(automaticallyDelete = true)
 public class YoutubeCanal {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-	
-	@Column(name = "name", length = 255, unique = true)
+
+    @Column(name = "name", length = 255, unique = true)
     @NotNull
     private String name;
 
+    @Column(name = "id_channel", length = 255, unique = true)
+    @NotNull
+    private String idChannel;
+    
 	public String getName() {
         return name;
     }
 
-	public void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-	public String toString() {
+    public String toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 
-	public Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+	public String getIdChannel() {
+        return this.idChannel;
+    }
+
+	public void setIdChannel(String idChannel) {
+        this.idChannel = idChannel;
     }
 }

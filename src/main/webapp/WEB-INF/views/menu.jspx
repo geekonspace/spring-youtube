@@ -24,6 +24,7 @@
                     <menu:item id="i_controller__radioindex_id" messageCode="global_generic" url="/radio/index" z="wflWk9HHNIT3hIHFP9yePCihI0w="/>
                     <menu:item id="i_controller__tvindex_id" messageCode="global_generic" url="/tv/index" z="71nkxsN9khTdBWeU9reY8OXGkrA="/>
                     <menu:item id="i_controller__youtubeindex_id" messageCode="global_generic" url="/youtube/index" z="fRWa6DlpoO+c535wNRtavqZQmy8="/>
+                    <menu:item id="i_controller__prensaindex_id" messageCode="global_generic" url="/prensa/index" z="Ig/T4mZ+jaXIpyRDG+QQyR6NeBc="/>
                 </menu:category>
             </menu:menu>
         </c:when>

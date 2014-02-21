@@ -14,7 +14,7 @@ import org.springframework.roo.addon.jpa.entity.RooJpaEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 
 /**
- * 
+ *
  * @author Williams Rivas
  * Created 17/02/2014 14:01:15
  *
@@ -27,92 +27,92 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooDbManaged(automaticallyDelete = true)
 public class ConfigLiveJwplayer {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-	public Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-	@Column(name = "url", length = 255, unique = true)
+    @Column(name = "url", length = 255, unique = true)
     @NotNull
     private String url;
 
-	@Column(name = "streamer", length = 45, unique = true)
+    @Column(name = "streamer", length = 45, unique = true)
     @NotNull
     private String streamer;
 
-	@Column(name = "width")
+    @Column(name = "width")
     @NotNull
     private Integer width;
 
-	@Column(name = "heigth")
+    @Column(name = "heigth")
     @NotNull
     private Integer heigth;
 
-	@Column(name = "type", length = 1)
+    @Column(name = "type", length = 1)
     @NotNull
     private String type;
 
-	@Column(name = "description", length = 255)
+    @Column(name = "description", length = 255)
     @NotNull
     private String description;
 
-	public String getUrl() {
+    public String getUrl() {
         return url;
     }
 
-	public void setUrl(String url) {
+    public void setUrl(String url) {
         this.url = url;
     }
 
-	public String getStreamer() {
+    public String getStreamer() {
         return streamer;
     }
 
-	public void setStreamer(String streamer) {
+    public void setStreamer(String streamer) {
         this.streamer = streamer;
     }
 
-	public Integer getWidth() {
+    public Integer getWidth() {
         return width;
     }
 
-	public void setWidth(Integer width) {
+    public void setWidth(Integer width) {
         this.width = width;
     }
 
-	public Integer getHeigth() {
+    public Integer getHeigth() {
         return heigth;
     }
 
-	public void setHeigth(Integer heigth) {
+    public void setHeigth(Integer heigth) {
         this.heigth = heigth;
     }
 
-	public String getType() {
+    public String getType() {
         return type;
     }
 
-	public void setType(String type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-	public String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-	public void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-	public String toString() {
+    public String toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 }

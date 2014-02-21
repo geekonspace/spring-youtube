@@ -36,3 +36,10 @@ controller class --class ~.web.RadioController --preferredMapping /radio
 controller class --class ~.web.TvController --preferredMapping /tv
 controller class --class ~.web.YoutubeController --preferredMapping /youtube
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-18 15:56:00
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-19 09:30:59
+controller class --class ~.web.PrensaController --preferredMapping /prensa
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-19 14:47:27
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-20 09:37:00
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-20 12:11:13
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-20 12:52:42
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-20 13:59:32

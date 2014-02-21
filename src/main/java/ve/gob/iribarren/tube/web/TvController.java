@@ -9,14 +9,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ve.gob.iribarren.tube.repository.CategoryRepository;
+import ve.gob.iribarren.tube.service.ConfigLiveJwplayerService;
 
 @RequestMapping("/tv/**")
 @Controller
-public class TvController {
+public class TvController extends GlobalModelAttributes{
 
+
+	
 	@Autowired
-    CategoryRepository categoryRepository;
+	ConfigLiveJwplayerService livePlayerService;
 	
     @RequestMapping(method = RequestMethod.POST, value = "{id}")
     public void post(@PathVariable Long id, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
@@ -24,7 +26,6 @@ public class TvController {
 
     @RequestMapping
     public String index(ModelMap uiModel) {
-    	uiModel.addAttribute("categories", categoryRepository.findAll());
         return "tv/index";
     }
 }
