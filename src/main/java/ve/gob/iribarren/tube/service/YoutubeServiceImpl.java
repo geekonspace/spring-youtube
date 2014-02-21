@@ -11,6 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.springframework.stereotype.Service;
+
 import ve.gob.iribarren.tube.exceptions.SearchYoutubeException;
 import ve.gob.iribarren.tube.exceptions.YoutubeJsonError;
 import ve.gob.iribarren.tube.model.PageResultYoutube;
@@ -20,6 +22,7 @@ import ve.gob.iribarren.tube.model.PageResultYoutube;
  * @author Williams Rivas Created 20/02/2014 12:59:49
  * 
  */
+@Service
 public class YoutubeServiceImpl implements YoutubeService {
 
 	public static final String PARAM_MAX_RESULTS = "maxResults";

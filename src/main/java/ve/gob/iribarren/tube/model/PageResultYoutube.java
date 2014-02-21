@@ -4,9 +4,6 @@
 package ve.gob.iribarren.tube.model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -63,6 +60,9 @@ public class PageResultYoutube {
 				video = new VideoYoutube();
 				JSONObject item = items.getJSONObject(i);
 				JSONObject id = item.getJSONObject("id");
+				if(!id.getString("kind").equals("youtube#video")){
+					continue;
+				}
 				JSONObject snippet = item.getJSONObject("snippet");
 				video.setVideoId(id.getString("videoId"));
 				video.setChannelId(snippet.getString("channelId"));
