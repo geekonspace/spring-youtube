@@ -49,7 +49,11 @@ public class PageResultYoutube {
 		}
 		if (jo.has("pageInfo")) {
 			JSONObject pageInfo = jo.getJSONObject("pageInfo");
-			totalResults = pageInfo.getInt("totalResults");
+			if (!jo.has("prevPageToken")) { // first page. restar un elemento
+				totalResults = pageInfo.getInt("totalResults") - 1;
+			} else {
+				totalResults = pageInfo.getInt("totalResults");
+			}
 			resultsPerPage = pageInfo.getInt("resultsPerPage");
 		}
 		videosResults = new ArrayList<VideoYoutube>();
@@ -60,7 +64,7 @@ public class PageResultYoutube {
 				video = new VideoYoutube();
 				JSONObject item = items.getJSONObject(i);
 				JSONObject id = item.getJSONObject("id");
-				if(!id.getString("kind").equals("youtube#video")){
+				if (!id.getString("kind").equals("youtube#video")) {
 					continue;
 				}
 				JSONObject snippet = item.getJSONObject("snippet");

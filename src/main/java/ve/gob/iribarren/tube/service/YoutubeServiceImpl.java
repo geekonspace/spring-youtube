@@ -19,7 +19,7 @@ public class YoutubeServiceImpl implements YoutubeService {
 
 	public static final String PARAM_MAX_RESULTS = "maxResults";
 
-	public static final int DEFAULT_VALUE_MAX_RESULTS = 15;
+	public static final int DEFAULT_VALUE_MAX_RESULTS = 17;
 
 	public static final String PARAM_PART = "part";
 

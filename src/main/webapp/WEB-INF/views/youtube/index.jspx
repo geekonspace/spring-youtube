@@ -30,7 +30,7 @@
         <img alt="${fn:escapeXml(previous_label)}" src="${previous_image_url}" />
       </a>
     </c:if>
-    <c:out value=" " />
+    <c:out value="${youtube.videosResults.size()}" /> <c:out value=" de "/><c:out value="${youtube.totalResults}" />
     <c:if test="${not empty youtube.nextPageToken}">
       <spring:url value="" var="next">
         <spring:param name="page" value="${youtube.nextPageToken}" />
