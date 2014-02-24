@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
-  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-  <jsp:output omit-xml-declaration="yes"/>
-  <spring:message code="label_youtube_index" htmlEscape="false" var="title"/>
-  <util:panel id="title" title="${title}">
-    <spring:message code="application_name" htmlEscape="false" var="app_name"/>
-    <h3>
-      Videos Youtube 
-    </h3>
-  </util:panel>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0" style="height: auto; display: inline-block;">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<h3>Videos Youtube</h3>	
+	<div style="height: auto; display: inline-block;">	
+		<c:forEach items="${youtube.videosResults}" var="video">
+
+			<div class="gallery">
+				<a target="_blank" href="#"><img
+					src="${video.thumbnail}" alt="${video.title}" width="110"
+					height="90" /></a>
+				<div class="gallery-desc">${video.title}</div>
+			</div>
+		</c:forEach>
+	</div>
+	<br/>
+	<div>
+    <c:if test="${not empty youtube.prevPageToken}">
+      <spring:url value="" var="previous">
+        <spring:param name="page" value="${youtube.prevPageToken}" />
+      </spring:url>
+      <spring:url value="/resources/images/resultset_previous.png" var="previous_image_url" />
+      <spring:message code="list_previous" var="previous_label" htmlEscape="false" />
+      <a class="image" href="${previous}" title="${fn:escapeXml(previous_label)}">
+        <img alt="${fn:escapeXml(previous_label)}" src="${previous_image_url}" />
+      </a>
+    </c:if>
+    <c:out value=" " />
+    <c:if test="${not empty youtube.nextPageToken}">
+      <spring:url value="" var="next">
+        <spring:param name="page" value="${youtube.nextPageToken}" />
+      </spring:url>
+      <spring:url value="/resources/images/resultset_next.png" var="next_image_url" />
+      <spring:message code="list_next" var="next_label" htmlEscape="false" />
+      <a class="image" href="${next}" title="${fn:escapeXml(next_label)}">
+        <img alt="${fn:escapeXml(next_label)}" src="${next_image_url}" />
+      </a>
+    </c:if>    	
+	</div>
 </div>

@@ -21,14 +21,21 @@ public interface YoutubeService {
 	/**
 	 * Busca videos de youtube retornando como resultado el objeto
 	 * PageResultYoutube el cual contendra informacion sobre la pagina y videos
-	 * por pagina. Ejemplo de una url youtube:
-	 * </br>
-	 * url: https://www.googleapis.com/youtube/v3/search?part=snippet&pageToken=CAoQAA&channelId=UCIwcrFgqc3-g_Cl9L77PWYw&maxResults=10&key=AIzaSyBB8x12DXzrzXKhkum5f_Nv3Yl7-0GSwCg
+	 * por pagina. Ejemplo de una url youtube: </br> url:
+	 * https://www.googleapis.
+	 * com/youtube/v3/search?part=snippet&pageToken=CAoQAA
+	 * &channelId=UCIwcrFgqc3-
+	 * g_Cl9L77PWYw&maxResults=10&key=AIzaSyBB8x12DXzrzXKhkum5f_Nv3Yl7-0GSwCg
 	 * 
-	 * @param part por defecto debe ser "snippet"
-	 * @param channelId el id del canal que contendra los videos relacionados
-	 * @param maxResults maximo de resultados por pagina
-	 * @param pageToken representa el token o id de la pagina, siguiente o pagina anterior
+	 * @param part
+	 *            por defecto debe ser "snippet"
+	 * @param channelId
+	 *            el id del canal que contendra los videos relacionados
+	 * @param maxResults
+	 *            maximo de resultados por pagina
+	 * @param pageToken
+	 *            representa el token o id de la pagina, siguiente o pagina
+	 *            anterior
 	 * @return
 	 * @throws SearchYoutubeException
 	 */
@@ -58,5 +65,17 @@ public interface YoutubeService {
 	 * @throws SearchYoutubeException
 	 */
 	public PageResultYoutube searchYoutubeVideos()
+			throws SearchYoutubeException;
+
+	/**
+	 * Busca videos de youtube en base a los parametros de configuracion por
+	 * defectos pero pasando como parametro la página a buscar. Si el pageToken
+	 * no existe, una excepcion desde youtube será captura y lanzada.
+	 * 
+	 * @param pageToken
+	 * @return
+	 * @throws SearchYoutubeException
+	 */
+	public PageResultYoutube searchYoutubeVideos(String pageToken)
 			throws SearchYoutubeException;
 }

@@ -3,18 +3,10 @@
  */
 package ve.gob.iribarren.tube.service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.springframework.stereotype.Service;
 
+import ve.gob.iribarren.tube.core.Util;
 import ve.gob.iribarren.tube.exceptions.SearchYoutubeException;
-import ve.gob.iribarren.tube.exceptions.YoutubeJsonError;
 import ve.gob.iribarren.tube.model.PageResultYoutube;
 
 /**
@@ -53,13 +45,8 @@ public class YoutubeServiceImpl implements YoutubeService {
 	public PageResultYoutube searchYoutubeVideos(String part, String channelId,
 			int maxResults, String pageToken) throws SearchYoutubeException {
 		String query = buildQueryUrl(part, channelId, maxResults, pageToken);
-		try {
-			String dataJson = invokeRequest(query);
-			return new PageResultYoutube(dataJson);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-			throw new SearchYoutubeException(e.getMessage());
-		}
+		String dataJson = Util.httpGet(query);
+		return new PageResultYoutube(dataJson);
 	}
 
 	@Override
@@ -106,7 +93,7 @@ public class YoutubeServiceImpl implements YoutubeService {
 			url.append(maxResults);
 		}
 		// pagina
-		if (pageToken != null && pageToken.equals("")) {
+		if (pageToken != null && !pageToken.equals("")) {
 			url.append(PARAM_VALUE_CONCAT).append(PARAM_PAGE_TOKEN)
 					.append(PARAM_VALUE_SEPARATOR).append(pageToken);
 		}
@@ -116,62 +103,11 @@ public class YoutubeServiceImpl implements YoutubeService {
 		return url.toString();
 	}
 
-	protected String invokeRequest(String stringUrl)
-			throws MalformedURLException, SearchYoutubeException {
-		URL url = new URL(stringUrl);
-		HttpURLConnection urlConnection = null;
-		String dataJson = "";
-		try {
-			urlConnection = (HttpURLConnection) url.openConnection();
-			urlConnection.setConnectTimeout(5000); // set timeout to 5 seconds
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					urlConnection.getInputStream()));
-			StringBuffer sb = new StringBuffer();
-			String inputLine;
-			while ((inputLine = in.readLine()) != null) {
-				sb.append(inputLine);
-			}
-			dataJson = sb.toString();
-		} catch (java.net.SocketTimeoutException e) {
-			throw new SearchYoutubeException(e.getMessage());
-		} catch (IOException e) {
-			if (urlConnection instanceof HttpURLConnection) {
-				HttpURLConnection httpConn = (HttpURLConnection) urlConnection;
-				InputStream in = null;
-				try {
-					in = httpConn.getErrorStream();
-					StringBuffer buf = new StringBuffer();
-					byte[] cbuf = new byte[1024 * 64];
-					int r = in.read(cbuf);
-					while (r > -1) {
-						if (r > 0) {
-							buf.append(new String(cbuf, 0, r));
-						}
-						r = in.read(cbuf);
-					}
-					YoutubeJsonError jsonError = new YoutubeJsonError(
-							buf.toString());
-					throw new SearchYoutubeException(jsonError.getMessage());
-
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				} finally {
-					if (in != null) {
-						try {
-							in.close();
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
-					}
-				}
-
-			}
-		} finally {
-			if (urlConnection != null) {
-				urlConnection.disconnect();
-			}
-		}
-		return dataJson;
+	@Override
+	public PageResultYoutube searchYoutubeVideos(String pageToken)
+			throws SearchYoutubeException {
+		return searchYoutubeVideos(DEFAULT_VALUE_PART,
+				DEFAULT_VALUE_CHANNEL_ID, DEFAULT_VALUE_MAX_RESULTS, pageToken);
 	}
 
 }

@@ -11,5 +11,7 @@
 	<h3>
 		<spring:message arguments="${app_name}" code="welcome_titlepane" />
 	</h3>
-
+	<div>
+	text
+	</div>
 </div>
