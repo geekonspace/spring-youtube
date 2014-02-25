@@ -3,8 +3,9 @@
  */
 package ve.gob.iribarren.tube.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.joda.time.DateTime;
 import org.json.JSONArray;
@@ -26,11 +27,11 @@ public class PageResultYoutube {
 
 	private int resultsPerPage;
 
-	private List<VideoYoutube> videosResults;
+	private Map<String, VideoYoutube> videosResults;
 
 	public PageResultYoutube(String nextPageToken, String prevPageToken,
 			int totalResults, int resultsPerPage,
-			List<VideoYoutube> videosResults) {
+			Map<String, VideoYoutube> videosResults) {
 		super();
 		this.nextPageToken = nextPageToken;
 		this.prevPageToken = prevPageToken;
@@ -56,7 +57,7 @@ public class PageResultYoutube {
 			}
 			resultsPerPage = pageInfo.getInt("resultsPerPage");
 		}
-		videosResults = new ArrayList<VideoYoutube>();
+		videosResults = new HashMap<String, VideoYoutube>();
 		if (jo.has("items")) {
 			JSONArray items = jo.getJSONArray("items");
 			VideoYoutube video;
@@ -77,15 +78,27 @@ public class PageResultYoutube {
 				video.setThumbnail(snippet.getJSONObject("thumbnails")
 						.getJSONObject("default").getString("url"));
 				video.setTitle(snippet.getString("title"));
-				videosResults.add(video);
+				videosResults.put(video.getVideoId(), video);
 			}
 
 		}
 
 	}
 
+	public String getVideoIdsSeparetedByComma() {
+		StringBuilder str = new StringBuilder();
+		if (videosResults != null && videosResults.size() > 0) {
+			for (Entry<String, VideoYoutube> entry : videosResults.entrySet()) {
+				str.append(entry.getKey()).append(",");
+			}
+		}// XXX fix validation
+		String finalStr = str.toString();
+		finalStr = finalStr.substring(0, finalStr.toString().length() - 1);
+		return finalStr;
+	}
+
 	public void addVideo(VideoYoutube video) {
-		videosResults.add(video);
+		videosResults.put(video.getVideoId(), video);
 	}
 
 	public String getNextPageToken() {
@@ -120,12 +133,28 @@ public class PageResultYoutube {
 		this.resultsPerPage = resultsPerPage;
 	}
 
-	public List<VideoYoutube> getVideosResults() {
+	public Map<String, VideoYoutube> getVideosResults() {
 		return videosResults;
 	}
 
-	public void setVideosResults(List<VideoYoutube> videosResults) {
+	public void setVideosResults(Map<String, VideoYoutube> videosResults) {
 		this.videosResults = videosResults;
+	}
+
+	public void setContentDetailsVideos(String contentDetailsJson) {
+		JSONObject jo = new JSONObject(contentDetailsJson);
+		if (jo.has("items")) {
+			JSONArray items = jo.getJSONArray("items");
+			for (int i = 0; i < items.length(); i++) {
+				JSONObject item = items.getJSONObject(i);
+				VideoYoutube video = videosResults.get(item.get("id"));
+				JSONObject cd = item.getJSONObject("contentDetails");
+				video.setDuration(cd.getString("duration"));
+				JSONObject stats = item.getJSONObject("statistics");
+				video.setViewCount(stats.getLong("viewCount"));
+				videosResults.put(video.getVideoId(), video);
+			}
+		}
 	}
 
 }

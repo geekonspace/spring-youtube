@@ -5,6 +5,10 @@ package ve.gob.iribarren.tube.model;
 
 import java.util.Date;
 
+import org.joda.time.Period;
+import org.joda.time.format.ISOPeriodFormat;
+import org.joda.time.format.PeriodFormatter;
+
 /**
  * Simple POJO donde se almacenara la data relacionada a un video desde youtube.
  * 
@@ -26,7 +30,10 @@ public class VideoYoutube {
 
 	private String channelTitle;
 
-	
+	private String duration;
+
+	private Long viewCount;
+
 	public VideoYoutube() {
 		this.videoId = "";
 		this.publischedAt = null;
@@ -35,11 +42,13 @@ public class VideoYoutube {
 		this.description = "";
 		this.thumbnail = "";
 		this.channelTitle = "";
+		this.duration = "";
+		this.viewCount = null;
 	}
 
 	public VideoYoutube(String videoId, Date publischedAt, String channelId,
 			String title, String description, String thumbnail,
-			String channelTitle) {
+			String channelTitle, String duration, Long viewCount) {
 		super();
 		this.videoId = videoId;
 		this.publischedAt = publischedAt;
@@ -48,6 +57,8 @@ public class VideoYoutube {
 		this.description = description;
 		this.thumbnail = thumbnail;
 		this.channelTitle = channelTitle;
+		this.duration = duration;
+		this.viewCount = viewCount;
 	}
 
 	public String getVideoId() {
@@ -104,6 +115,41 @@ public class VideoYoutube {
 
 	public void setChannelTitle(String channelTitle) {
 		this.channelTitle = channelTitle;
+	}
+
+	public String getDuration() {
+		if (duration != null && !duration.equals("")) {
+			StringBuilder strPeriod = new StringBuilder();
+			PeriodFormatter formatter = ISOPeriodFormat.standard();
+			Period period = formatter.parsePeriod(duration);
+			if (period.getHours() > 0) {
+				strPeriod.append(period.getHours()).append(":");
+			}
+			if (period.getMinutes() < 10) {
+				strPeriod.append("0").append(period.getMinutes()).append(":");
+			} else {
+				strPeriod.append(period.getMinutes()).append(":");
+			}
+			if (period.getSeconds() < 10) {
+				strPeriod.append("0").append(period.getSeconds());
+			} else {
+				strPeriod.append(period.getSeconds());
+			}
+			return strPeriod.toString();
+		}
+		return duration;
+	}
+
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
+
+	public Long getViewCount() {
+		return viewCount;
+	}
+
+	public void setViewCount(Long viewCount) {
+		this.viewCount = viewCount;
 	}
 
 }

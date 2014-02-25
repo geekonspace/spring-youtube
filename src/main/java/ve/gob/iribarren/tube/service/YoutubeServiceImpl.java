@@ -25,9 +25,13 @@ public class YoutubeServiceImpl implements YoutubeService {
 
 	public static final String DEFAULT_VALUE_PART = "snippet";
 
+	public static final String DEFAULT_VALUE_PARTS_VIDEOS = "contentDetails%2Cstatistics";
+
 	public static final String PARAM_PAGE_TOKEN = "pageToken";
 
 	public static final String PARAM_CHANNEL_ID = "channelId";
+	
+	public static final String PARAM_VIDEO_IDS = "id";	
 
 	public static final String DEFAULT_VALUE_CHANNEL_ID = "UCIwcrFgqc3-g_Cl9L77PWYw";
 
@@ -37,16 +41,29 @@ public class YoutubeServiceImpl implements YoutubeService {
 
 	public static final String URL_SEARCH_YOUTUBE = "https://www.googleapis.com/youtube/v3/search?";
 
+	public static final String URL_VIDEOS_LIST = "https://www.googleapis.com/youtube/v3/videos?";
+
 	public static final String PARAM_VALUE_SEPARATOR = "=";
 
 	public static final String PARAM_VALUE_CONCAT = "&";
 
+	public static final String PARAM_VALUE_COMMA = "%2C";
+
 	@Override
 	public PageResultYoutube searchYoutubeVideos(String part, String channelId,
 			int maxResults, String pageToken) throws SearchYoutubeException {
-		String query = buildQueryUrl(part, channelId, maxResults, pageToken);
+		String query = buildQueryUrl(part, channelId, maxResults, pageToken, null);
 		String dataJson = Util.httpGet(query);
-		return new PageResultYoutube(dataJson);
+		
+		PageResultYoutube page = new PageResultYoutube(dataJson);
+
+		String videoIds = page.getVideoIdsSeparetedByComma();
+		
+		String contentDetailsJson = Util.httpGet(buildQueryUrl(DEFAULT_VALUE_PARTS_VIDEOS, null, DEFAULT_VALUE_MAX_RESULTS, null, videoIds));
+		
+		page.setContentDetailsVideos(contentDetailsJson);
+		
+		return page;
 	}
 
 	@Override
@@ -58,32 +75,63 @@ public class YoutubeServiceImpl implements YoutubeService {
 	@Override
 	public PageResultYoutube searchYoutubeVideos()
 			throws SearchYoutubeException {
-		return searchYoutubeVideos(null, null, 0, null);
+		return searchYoutubeVideos(DEFAULT_VALUE_PART,
+				DEFAULT_VALUE_CHANNEL_ID, DEFAULT_VALUE_MAX_RESULTS);
 	}
 
 	private String buildQueryUrl(String part, String channelId, int maxResults,
-			String pageToken) {
-		StringBuilder url = new StringBuilder(URL_SEARCH_YOUTUBE);
-		// parametro part
-		url.append(PARAM_PART).append(PARAM_VALUE_SEPARATOR);
-		if (part != null && !part.equals("")) {
-			if (!part.equals(DEFAULT_VALUE_PART)) {
-				url.append(DEFAULT_VALUE_PART);
+			String pageToken, String videoIds) {
+		StringBuilder url;
+		if(channelId != null && !channelId.equals("")){
+			url = new StringBuilder(URL_SEARCH_YOUTUBE);
+			// parametro part
+			url.append(PARAM_PART).append(PARAM_VALUE_SEPARATOR);
+			if (part != null && !part.equals("")) {
+				if (!part.equals(DEFAULT_VALUE_PART)) {
+					url.append(DEFAULT_VALUE_PART);
+				} else {
+					url.append(part);
+				}
 			} else {
-				url.append(part);
+				url.append(DEFAULT_VALUE_PART);
 			}
-		} else {
-			url.append(DEFAULT_VALUE_PART);
-		}
 
-		// parametro channel id
-		url.append(PARAM_VALUE_CONCAT).append(PARAM_CHANNEL_ID)
+			// parametro channel id
+			url.append(PARAM_VALUE_CONCAT).append(PARAM_CHANNEL_ID)
+					.append(PARAM_VALUE_SEPARATOR);
+			if (channelId != null && !channelId.equals("")) {
+				url.append(channelId);
+			} else {
+				url.append(DEFAULT_VALUE_CHANNEL_ID);
+			}
+			// pagina
+			if (pageToken != null && !pageToken.equals("")) {
+				url.append(PARAM_VALUE_CONCAT).append(PARAM_PAGE_TOKEN)
+						.append(PARAM_VALUE_SEPARATOR).append(pageToken);
+			}
+		}else{ // busqueda no por canal sino por ids de videos
+			//https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=uWKM4F2RAtI%2CJ2NIttHwZBA%2C6UliPT1LIc4%2CSaLWwDyHMvo&maxResults=3&key=AIzaSyBB8x12DXzrzXKhkum5f_Nv3Yl7-0GSwCg
+			url = new StringBuilder(URL_VIDEOS_LIST);
+			
+			// parametro part
+			url.append(PARAM_PART).append(PARAM_VALUE_SEPARATOR);
+			if (part != null && !part.equals("")) {
+				if (!part.equals(DEFAULT_VALUE_PARTS_VIDEOS)) {
+					url.append(DEFAULT_VALUE_PARTS_VIDEOS);
+				} else {
+					url.append(part);
+				}
+			} else {
+				url.append(DEFAULT_VALUE_PARTS_VIDEOS);
+			}			
+			//videos ids separados por comma
+			if(videoIds != null && !videoIds.equals("")){
+				url.append(PARAM_VALUE_CONCAT).append(PARAM_VIDEO_IDS)
 				.append(PARAM_VALUE_SEPARATOR);
-		if (channelId != null && !channelId.equals("")) {
-			url.append(channelId);
-		} else {
-			url.append(DEFAULT_VALUE_CHANNEL_ID);
+				url.append(videoIds);
+			}
 		}
+		
 		// max results
 		url.append(PARAM_VALUE_CONCAT).append(PARAM_MAX_RESULTS)
 				.append(PARAM_VALUE_SEPARATOR);
@@ -92,14 +140,11 @@ public class YoutubeServiceImpl implements YoutubeService {
 		} else {
 			url.append(maxResults);
 		}
-		// pagina
-		if (pageToken != null && !pageToken.equals("")) {
-			url.append(PARAM_VALUE_CONCAT).append(PARAM_PAGE_TOKEN)
-					.append(PARAM_VALUE_SEPARATOR).append(pageToken);
-		}
+		
 		// key developer
 		url.append(PARAM_VALUE_CONCAT).append(PARAM_KEY)
 				.append(PARAM_VALUE_SEPARATOR).append(DEFAULT_VALUE_KEY);
+		
 		return url.toString();
 	}
 
