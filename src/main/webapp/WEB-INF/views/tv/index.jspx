@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
-  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-  <jsp:output omit-xml-declaration="yes"/>
-  <spring:message code="label_tv_index" htmlEscape="false" var="title"/>
-  <util:panel id="title" title="${title}">
-    <spring:message code="application_name" htmlEscape="false" var="app_name"/>
-    <h3>
-      TV Online
-    </h3>
-  </util:panel>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0" class="not-panel">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	
+	<spring:url var="jwplayersw" value="/resources/jwplayer/player.swf" />
+	<spring:url var="jwplayerjs" value="/resources/jwplayer/jwplayer.js" />
+
+	<script type='text/javascript' src='${jwplayerjs}' >var a;</script>
+		<h3>TV Online</h3>
+		<div id='mediaspace'></div>
+		<script type="text/javascript">
+		//<![CDATA[
+	  jwplayer('mediaspace').setup({
+	    'flashplayer': '${jwplayersw}',
+	    'autostart': true,	    
+	    'file': 'promartv',
+	    'streamer': ' rtmp://edge.wms28.lorini.net/promartv',
+	    'controlbar': 'bottom',
+	    'width': '320',
+	    'height': '240'
+	  });
+		//]]>
+	</script>
+
 </div>

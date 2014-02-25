@@ -78,7 +78,6 @@ body {
 	background: #fff;
 }
 /*panel left*/
-
 #main_public {
 	overflow: hidden;
 	display: box;
@@ -500,30 +499,43 @@ There is no required CSS for this plugin to work properly // but here is what is
 }
 
 /*css gallery videos*/
-div .gallery
-{
-  margin: 5px;
-  border: 1px solid #D9D9DF;
-  height: auto;
-  width: auto;
-  float: left;
-  text-align: left;
-}	
-div .gallery img
-{
-  display: inline;
-  margin: 5px;
-  border: 1px solid #ffffff;
+div .gallery {
+	margin: 5px;
+	border: 1px solid #D9D9DF;
+	height: auto;
+	width: auto;
+	float: left;
+	text-align: left;
 }
-div .gallery a:hover img {border: 1px solid #0000ff;}
-div .gallery-desc
-{
-  text-align: left;
-  font-weight: bold;
-  width: 120px;
-  margin: 5px;
-  font-size: xx-small;
-  white-space: nowrap;
-  overflow:hidden;
-  text-overflow: ellipsis;
+
+div .gallery img {
+	display: inline;
+	margin: 5px;
+	border: 1px solid #ffffff;
+}
+
+div .gallery a:hover img {
+	border: 1px solid #0000ff;
+}
+
+div .gallery-desc {
+	text-align: left;
+	font-weight: bold;
+	width: 120px;
+	margin: 5px;
+	font-size: xx-small;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#mediaspace_wrapper {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.not-panel {
+	height: auto;
+	display: inline-block;
+	width: 100%;
 }

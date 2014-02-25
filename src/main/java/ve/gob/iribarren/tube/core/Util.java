@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -58,7 +57,6 @@ public class Util {
 		String dataJson = "";
 		try {
 			urlConnection = (HttpURLConnection) url.openConnection();
-			System.out.println(urlConnection.getHeaderField("Content-Type"));
 			urlConnection.setConnectTimeout(5000); // set timeout to 5 seconds
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					urlConnection.getInputStream(), StandardCharsets.UTF_8));
