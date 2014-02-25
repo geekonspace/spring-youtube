@@ -54,7 +54,7 @@ public class YoutubeServiceImpl implements YoutubeService {
 			int maxResults, String pageToken) throws SearchYoutubeException {
 		String query = buildQueryUrl(part, channelId, maxResults, pageToken, null);
 		String dataJson = Util.httpGet(query);
-		
+		System.out.println(dataJson);
 		PageResultYoutube page = new PageResultYoutube(dataJson);
 
 		String videoIds = page.getVideoIdsSeparetedByComma();

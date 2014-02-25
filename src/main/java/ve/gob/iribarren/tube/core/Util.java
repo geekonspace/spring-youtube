@@ -7,9 +7,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import ve.gob.iribarren.tube.exceptions.SearchYoutubeException;
 import ve.gob.iribarren.tube.exceptions.YoutubeJsonError;
@@ -56,9 +58,10 @@ public class Util {
 		String dataJson = "";
 		try {
 			urlConnection = (HttpURLConnection) url.openConnection();
+			System.out.println(urlConnection.getHeaderField("Content-Type"));
 			urlConnection.setConnectTimeout(5000); // set timeout to 5 seconds
 			BufferedReader in = new BufferedReader(new InputStreamReader(
-					urlConnection.getInputStream()));
+					urlConnection.getInputStream(), StandardCharsets.UTF_8));
 			StringBuffer sb = new StringBuffer();
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
