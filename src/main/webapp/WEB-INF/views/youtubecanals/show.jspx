@@ -4,5 +4,6 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_ve_gob_iribarren_tube_model_YoutubeCanal" object="${youtubecanal}" path="/youtubecanals" z="rXVNQJKOc/kM9tg2yQ2DoUqhf0s=">
         <field:display field="name" id="s_ve_gob_iribarren_tube_model_YoutubeCanal_name" object="${youtubecanal}" z="hF8xeOyHFG1R2wLv1iIb216GHAg="/>
+        <field:display field="idChannel" id="s_ve_gob_iribarren_tube_model_YoutubeCanal_idChannel" object="${youtubecanal}" z="N+JX+h2ByXY6j+k99i+VIJzk/Io="/>
     </page:show>
 </div>

@@ -4,6 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_ve_gob_iribarren_tube_model_YoutubeCanal" modelAttribute="youtubeCanal" path="/youtubecanals" render="${empty dependencies}" z="C9sbJx/Z3XxA5Gm1nVU+ynrIiH8=">
         <field:input field="name" id="c_ve_gob_iribarren_tube_model_YoutubeCanal_name" required="true" z="Mp6oR2ZT1xKnyrT9VxnwZSQ2KZo="/>
+        <field:input field="idChannel" id="c_ve_gob_iribarren_tube_model_YoutubeCanal_idChannel" required="true" z="TusGaV3NAYOYaGA7e3uExdtkQYk="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_ve_gob_iribarren_tube_model_YoutubeCanal" render="${not empty dependencies}" z="3pJK774nFr/VSOAOac7fx10gu8U="/>
 </div>

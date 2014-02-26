@@ -17,21 +17,23 @@ import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 import ve.gob.iribarren.tube.model.YoutubeCanal;
 import ve.gob.iribarren.tube.repository.YoutubeCanalRepository;
+import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 
 /**
- * 
+ *
  * @author Williams Rivas
  * Created 18/02/2014 14:09:49
  *
  */
 @RequestMapping("/youtubecanals")
 @Controller
+@RooWebScaffold(path = "youtubecanals", formBackingObject = YoutubeCanal.class)
 public class YoutubeCanalController {
 
-	@Autowired
+    @Autowired
     YoutubeCanalRepository youtubeCanalRepository;
 
-	@RequestMapping(method = RequestMethod.POST, produces = "text/html")
+    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String create(@Valid YoutubeCanal youtubeCanal, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, youtubeCanal);
@@ -42,20 +44,20 @@ public class YoutubeCanalController {
         return "redirect:/youtubecanals/" + encodeUrlPathSegment(youtubeCanal.getId().toString(), httpServletRequest);
     }
 
-	@RequestMapping(params = "form", produces = "text/html")
+    @RequestMapping(params = "form", produces = "text/html")
     public String createForm(Model uiModel) {
         populateEditForm(uiModel, new YoutubeCanal());
         return "youtubecanals/create";
     }
 
-	@RequestMapping(value = "/{id}", produces = "text/html")
+    @RequestMapping(value = "/{id}", produces = "text/html")
     public String show(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("youtubecanal", youtubeCanalRepository.findOne(id));
         uiModel.addAttribute("itemId", id);
         return "youtubecanals/show";
     }
 
-	@RequestMapping(produces = "text/html")
+    @RequestMapping(produces = "text/html")
     public String list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
@@ -69,7 +71,7 @@ public class YoutubeCanalController {
         return "youtubecanals/list";
     }
 
-	@RequestMapping(method = RequestMethod.PUT, produces = "text/html")
+    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String update(@Valid YoutubeCanal youtubeCanal, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, youtubeCanal);
@@ -80,13 +82,13 @@ public class YoutubeCanalController {
         return "redirect:/youtubecanals/" + encodeUrlPathSegment(youtubeCanal.getId().toString(), httpServletRequest);
     }
 
-	@RequestMapping(value = "/{id}", params = "form", produces = "text/html")
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, youtubeCanalRepository.findOne(id));
         return "youtubecanals/update";
     }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         YoutubeCanal youtubeCanal = youtubeCanalRepository.findOne(id);
         youtubeCanalRepository.delete(youtubeCanal);
@@ -96,18 +98,19 @@ public class YoutubeCanalController {
         return "redirect:/youtubecanals";
     }
 
-	void populateEditForm(Model uiModel, YoutubeCanal youtubeCanal) {
+    void populateEditForm(Model uiModel, YoutubeCanal youtubeCanal) {
         uiModel.addAttribute("youtubeCanal", youtubeCanal);
     }
 
-	String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+    String encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
         String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }
         try {
             pathSegment = UriUtils.encodePathSegment(pathSegment, enc);
-        } catch (UnsupportedEncodingException uee) {}
+        } catch (UnsupportedEncodingException uee) {
+        }
         return pathSegment;
     }
 }

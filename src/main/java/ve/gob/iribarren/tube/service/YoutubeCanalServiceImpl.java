@@ -47,4 +47,6 @@ public class YoutubeCanalServiceImpl implements YoutubeCanalService {
 	public YoutubeCanal updateYoutubeCanal(YoutubeCanal youtubeCanal) {
         return youtubeCanalRepository.save(youtubeCanal);
     }
+	
+	
 }

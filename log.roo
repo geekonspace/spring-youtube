@@ -43,3 +43,6 @@ controller class --class ~.web.PrensaController --preferredMapping /prensa
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-20 12:11:13
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-20 12:52:42
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-20 13:59:32
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-25 14:34:35
+web mvc scaffold --backingType ~.model.YoutubeCanal --class ~.web.YoutubeCanalController
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-25 15:56:24

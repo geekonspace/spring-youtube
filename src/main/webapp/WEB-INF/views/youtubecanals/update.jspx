@@ -4,5 +4,6 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_ve_gob_iribarren_tube_model_YoutubeCanal" modelAttribute="youtubeCanal" path="/youtubecanals" versionField="none" z="RGDL7ngZ/U9536kRKtkvcJF7FTk=">
         <field:input field="name" id="c_ve_gob_iribarren_tube_model_YoutubeCanal_name" required="true" z="Mp6oR2ZT1xKnyrT9VxnwZSQ2KZo="/>
+        <field:input field="idChannel" id="c_ve_gob_iribarren_tube_model_YoutubeCanal_idChannel" required="true" z="TusGaV3NAYOYaGA7e3uExdtkQYk="/>
     </form:update>
 </div>

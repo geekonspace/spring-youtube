@@ -39,8 +39,8 @@ public class YoutubeCanal {
     @Column(name = "id_channel", length = 255, unique = true)
     @NotNull
     private String idChannel;
-    
-	public String getName() {
+
+    public String getName() {
         return name;
     }
 
@@ -60,11 +60,11 @@ public class YoutubeCanal {
         this.id = id;
     }
 
-	public String getIdChannel() {
+    public String getIdChannel() {
         return this.idChannel;
     }
 
-	public void setIdChannel(String idChannel) {
+    public void setIdChannel(String idChannel) {
         this.idChannel = idChannel;
     }
 }

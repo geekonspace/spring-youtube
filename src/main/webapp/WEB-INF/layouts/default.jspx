@@ -24,8 +24,9 @@
 <body class="tundra spring">
 	<div id="wrapper">
 		<tiles:insertAttribute name="header" ignore="true" />
+		<tiles:insertAttribute name="menu_jquery" ignore="true" />
 		<tiles:insertAttribute name="menu" ignore="true" />
-		<div id="main">
+		<div id="main_public">
 			<tiles:insertAttribute name="body" />
 			<tiles:insertAttribute name="footer" ignore="true" />
 		</div>
