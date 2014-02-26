@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
-    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
-    <jsp:output omit-xml-declaration="yes"/>
-    <page:list id="pl_ve_gob_iribarren_tube_model_Category" items="${categorys}" z="DKmJ7m6mCWoEvC9yhN9be29MUZ4=">
-        <table:table data="${categorys}" id="l_ve_gob_iribarren_tube_model_Category" path="/categories" z="Fbb+/c7BtXg4e4ysd1VvFxhDN8w=">
-            <table:column id="c_ve_gob_iribarren_tube_model_Category_name" property="name" z="iqgcpgJrgK8MxT/ozmQKYTKdqNo="/>
-        </table:table>
-    </page:list>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:page="urn:jsptagdir:/WEB-INF/tags/form"
+	xmlns:spring="http://www.springframework.org/tags" 
+	xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<spring:message code="menu_category_label" var="labelPlural"
+		htmlEscape="false" />
+
+	<page:list id="pl_ve_gob_iribarren_tube_model_Category"
+		labelPlural="${labelPlural}" items="${categorys}"
+		z="DKmJ7m6mCWoEvC9yhN9be29MUZ4=">
+		<table:table data="${categorys}"
+			id="l_ve_gob_iribarren_tube_model_Category" path="/categories"
+			z="Fbb+/c7BtXg4e4ysd1VvFxhDN8w=">
+			<table:column id="c_ve_gob_iribarren_tube_model_Category_name"
+				property="name" z="iqgcpgJrgK8MxT/ozmQKYTKdqNo=" />
+		</table:table>
+	</page:list>
 </div>

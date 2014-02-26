@@ -5,8 +5,8 @@
 	version="2.0">
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
-	<menu:menu id="categorias">
-		<menu:category id="p" label="Categorias">
+	<menu:menu id="_categorias">
+		<menu:category id="pl_category" messageCode="menu_category_label">
 			<c:forEach items="${categories}" var="category">
 				<menu:item url="#" id="link_${category.id}"
 					label="${category.name}"></menu:item>

@@ -47,3 +47,4 @@ controller class --class ~.web.PrensaController --preferredMapping /prensa
 web mvc scaffold --backingType ~.model.YoutubeCanal --class ~.web.YoutubeCanalController
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-25 15:56:24
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-26 09:10:34
+web mvc install language --code es
