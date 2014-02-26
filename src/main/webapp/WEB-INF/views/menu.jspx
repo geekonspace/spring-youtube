@@ -14,10 +14,10 @@
                     <menu:item id="i_configlivejwplayer_list" messageCode="global_menu_list" url="/configlivejwplayers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="BoD5Z5xMx9EcuRcmJCyEHEFiqKQ="/>
                 </menu:category>
                 <menu:category id="c_youtubecanal" z="mrSTeuGHOGdwK6pGrxMNDYx0P1o=">
-                    <menu:item id="i_youtubecanal_new" messageCode="global_menu_new" url="/youtubecanals?form" z="SiqdqstXJv/Wy8kyo7EmozL6E9E="/>
-                    <menu:item id="i_youtubecanal_list" messageCode="global_menu_list" url="/youtubecanals?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
+                    <menu:item id="i_youtubecanal_new" label="Create/Update Youtube Channel" url="/youtubecanals?form" z="user-managed"/>
+                    <menu:item id="i_youtubecanal_list" messageCode="global_menu_list" render="false" url="/youtubecanals?page=1&amp;size=${empty param.size ? 10 : param.size}"/>
                 </menu:category>
-                <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8=" render="false">
+                <menu:category id="c_controller" render="false" z="user-managed">
                     <menu:item id="i_controller__inicioindex_id" messageCode="global_generic" url="/inicio/index" z="O02YRJSzKDd6mX2rM8lBgnstteA="/>
                     <menu:item id="i_controller__videosindex_id" messageCode="global_generic" url="/videos/index" z="usLgdCCUMBeMPS0dIeaDvIOQgLo="/>
                     <menu:item id="i_controller__audiosindex_id" messageCode="global_generic" url="/audios/index" z="Ly3UQLDvQs91PKmBBg9RkyITbgU="/>

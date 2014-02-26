@@ -2,8 +2,9 @@
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <page:show id="ps_ve_gob_iribarren_tube_model_YoutubeCanal" object="${youtubecanal}" path="/youtubecanals" z="rXVNQJKOc/kM9tg2yQ2DoUqhf0s=">
+    <page:show create="false" delete="false" id="ps_ve_gob_iribarren_tube_model_YoutubeCanal" list="false" object="${youtubecanal}" path="/youtubecanals" z="user-managed">
         <field:display field="name" id="s_ve_gob_iribarren_tube_model_YoutubeCanal_name" object="${youtubecanal}" z="hF8xeOyHFG1R2wLv1iIb216GHAg="/>
         <field:display field="idChannel" id="s_ve_gob_iribarren_tube_model_YoutubeCanal_idChannel" object="${youtubecanal}" z="N+JX+h2ByXY6j+k99i+VIJzk/Io="/>
+        <field:display field="maxResults" id="s_ve_gob_iribarren_tube_model_YoutubeCanal_maxResults" object="${youtubecanal}" z="hlY0/PI2zP9dyP6rX9Ee0HBDlgA="/>
     </page:show>
 </div>

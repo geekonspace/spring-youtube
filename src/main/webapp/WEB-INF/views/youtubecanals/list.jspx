@@ -3,9 +3,10 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_ve_gob_iribarren_tube_model_YoutubeCanal" items="${youtubecanals}" z="y6b57Z7z08n2rud2D7tv2Zw3iFE=">
-        <table:table data="${youtubecanals}" id="l_ve_gob_iribarren_tube_model_YoutubeCanal" path="/youtubecanals" z="4Vd81QKFaD6LyaOuSWjrVHrR9pQ=">
+        <table:table create="false" data="${youtubecanals}" delete="false" id="l_ve_gob_iribarren_tube_model_YoutubeCanal" path="/youtubecanals" z="user-managed">
             <table:column id="c_ve_gob_iribarren_tube_model_YoutubeCanal_name" property="name" z="Yo/ilyGTiq7jpMeIpS3CjrI7OQ4="/>
             <table:column id="c_ve_gob_iribarren_tube_model_YoutubeCanal_idChannel" property="idChannel" z="akQ4GQV+2iUvAzdpf1RelTyUgVg="/>
+            <table:column id="c_ve_gob_iribarren_tube_model_YoutubeCanal_maxResults" property="maxResults" z="R6eHH00/29s5t7N3tcUOnP4jR/0="/>
         </table:table>
     </page:list>
 </div>

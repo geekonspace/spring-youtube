@@ -16,7 +16,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<YoutubeCanal, String> ApplicationConversionServiceFactoryBean.getYoutubeCanalToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<ve.gob.iribarren.tube.model.YoutubeCanal, java.lang.String>() {
             public String convert(YoutubeCanal youtubeCanal) {
-                return new StringBuilder().append(youtubeCanal.getName()).append(' ').append(youtubeCanal.getIdChannel()).toString();
+                return new StringBuilder().append(youtubeCanal.getName()).append(' ').append(youtubeCanal.getIdChannel()).append(' ').append(youtubeCanal.getMaxResults()).toString();
             }
         };
     }

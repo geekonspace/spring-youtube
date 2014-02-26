@@ -3,11 +3,16 @@
  */
 package ve.gob.iribarren.tube.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ve.gob.iribarren.tube.core.Util;
 import ve.gob.iribarren.tube.exceptions.SearchYoutubeException;
 import ve.gob.iribarren.tube.model.PageResultYoutube;
+import ve.gob.iribarren.tube.model.YoutubeCanal;
+import ve.gob.iribarren.tube.repository.YoutubeCanalRepository;
 
 /**
  * 
@@ -19,8 +24,10 @@ public class YoutubeServiceImpl implements YoutubeService {
 
 	public static final String PARAM_MAX_RESULTS = "maxResults";
 
-	public static final int DEFAULT_VALUE_MAX_RESULTS = 17;
+	private static int DEFAULT_VALUE_MAX_RESULTS = 16;
 
+	private static String DEFAULT_VALUE_CHANNEL_ID = "UCIwcrFgqc3-g_Cl9L77PWYw";
+	
 	public static final String PARAM_PART = "part";
 
 	public static final String DEFAULT_VALUE_PART = "snippet";
@@ -33,13 +40,11 @@ public class YoutubeServiceImpl implements YoutubeService {
 	
 	public static final String PARAM_VIDEO_IDS = "id";	
 
-	public static final String DEFAULT_VALUE_CHANNEL_ID = "UCIwcrFgqc3-g_Cl9L77PWYw";
-
 	public static final String PARAM_KEY = "key";
 
 	private static final String DEFAULT_VALUE_KEY = "AIzaSyBB8x12DXzrzXKhkum5f_Nv3Yl7-0GSwCg";
 
-	public static final String URL_SEARCH_YOUTUBE = "https://www.googleapis.com/youtube/v3/search?";
+	public static final String URL_SEARCH_YOUTUBE = "https://www.googleapis.com/youtube/v3/search?type=video&";
 
 	public static final String URL_VIDEOS_LIST = "https://www.googleapis.com/youtube/v3/videos?";
 
@@ -49,9 +54,13 @@ public class YoutubeServiceImpl implements YoutubeService {
 
 	public static final String PARAM_VALUE_COMMA = "%2C";
 
+	@Autowired
+	protected YoutubeCanalRepository youtubeCanalRepository;
+	
 	@Override
 	public PageResultYoutube searchYoutubeVideos(String part, String channelId,
 			int maxResults, String pageToken) throws SearchYoutubeException {
+		setDefaultValues();
 		String query = buildQueryUrl(part, channelId, maxResults, pageToken, null);
 		String dataJson = Util.httpGet(query);
 
@@ -155,4 +164,11 @@ public class YoutubeServiceImpl implements YoutubeService {
 				DEFAULT_VALUE_CHANNEL_ID, DEFAULT_VALUE_MAX_RESULTS, pageToken);
 	}
 
+	private void setDefaultValues(){
+		List<YoutubeCanal> canals = youtubeCanalRepository.findAll();
+		if(canals != null && canals.size() > 0){
+			DEFAULT_VALUE_CHANNEL_ID = canals.get(0).getIdChannel();
+			DEFAULT_VALUE_MAX_RESULTS = canals.get(0).getMaxResults();
+		}		
+	}
 }

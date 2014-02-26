@@ -5,7 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.roo.addon.dbre.RooDbManaged;
@@ -40,6 +43,12 @@ public class YoutubeCanal {
     @NotNull
     private String idChannel;
 
+    @Column(name = "max_results")
+    @NotNull
+    @Min(8)
+    @Max(16)
+    private Integer maxResults;
+    
     public String getName() {
         return name;
     }
@@ -66,5 +75,13 @@ public class YoutubeCanal {
 
     public void setIdChannel(String idChannel) {
         this.idChannel = idChannel;
+    }
+
+	public Integer getMaxResults() {
+        return this.maxResults;
+    }
+
+	public void setMaxResults(Integer maxResults) {
+        this.maxResults = maxResults;
     }
 }

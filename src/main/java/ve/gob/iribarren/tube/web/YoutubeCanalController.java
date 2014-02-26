@@ -3,8 +3,11 @@
  */
 package ve.gob.iribarren.tube.web;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
+
 import ve.gob.iribarren.tube.model.YoutubeCanal;
 import ve.gob.iribarren.tube.repository.YoutubeCanalRepository;
+
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 
 /**
@@ -45,7 +50,13 @@ public class YoutubeCanalController {
     }
 
     @RequestMapping(params = "form", produces = "text/html")
-    public String createForm(Model uiModel) {
+    public String createForm(Model uiModel, HttpServletRequest httpServletRequest) {
+    	List<YoutubeCanal> canals = youtubeCanalRepository.findAll();
+    	if(canals != null && canals.size() > 0){ //solo debe ser uno
+    		YoutubeCanal canal = canals.get(0);
+            populateEditForm(uiModel, canal);
+            return "youtubecanals/update";
+    	}
         populateEditForm(uiModel, new YoutubeCanal());
         return "youtubecanals/create";
     }
