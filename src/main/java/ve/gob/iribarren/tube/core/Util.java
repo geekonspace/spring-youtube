@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import ve.gob.iribarren.tube.exceptions.SearchYoutubeException;
+import ve.gob.iribarren.tube.exceptions.HttpGetException;
 import ve.gob.iribarren.tube.exceptions.YoutubeJsonError;
 
 /**
@@ -46,12 +46,12 @@ public class Util {
 		}
 	}
 	
-	public static String httpGet(String stringUrl) throws SearchYoutubeException{
+	public static String httpGet(String stringUrl) throws HttpGetException{
 		URL url;
 		try {
 			url = new URL(stringUrl);
 		} catch (MalformedURLException e2) {
-			throw new SearchYoutubeException(e2.getMessage());
+			throw new HttpGetException(e2.getCause());
 		}
 		HttpURLConnection urlConnection = null;
 		String dataJson = "";
@@ -67,7 +67,7 @@ public class Util {
 			}
 			dataJson = sb.toString();
 		} catch (java.net.SocketTimeoutException e) {
-			throw new SearchYoutubeException(e.getMessage());
+			throw new HttpGetException(e);
 		} catch (IOException e) {
 			if (urlConnection instanceof HttpURLConnection) {
 				HttpURLConnection httpConn = (HttpURLConnection) urlConnection;
@@ -85,7 +85,7 @@ public class Util {
 					}
 					YoutubeJsonError jsonError = new YoutubeJsonError(
 							buf.toString());
-					throw new SearchYoutubeException(jsonError.getMessage());
+					throw new HttpGetException(jsonError.getMessage());
 
 				} catch (IOException e1) {
 					e1.printStackTrace();

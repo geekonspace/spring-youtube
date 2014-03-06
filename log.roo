@@ -48,3 +48,4 @@ web mvc scaffold --backingType ~.model.YoutubeCanal --class ~.web.YoutubeCanalCo
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-25 15:56:24
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-02-26 09:10:34
 web mvc install language --code es
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-02-26 15:54:06
