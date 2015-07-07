@@ -43,7 +43,7 @@ public class YoutubeServiceImpl implements YoutubeService {
 
 	public static final String PARAM_KEY = "key";
 
-	private static final String DEFAULT_VALUE_KEY = "AIzaSyBB8x12DXzrzXKhkum5f_Nv3Yl7-0GSwCg";
+	private static final String DEFAULT_VALUE_KEY = "XXX";
 
 	public static final String URL_SEARCH_YOUTUBE = "https://www.googleapis.com/youtube/v3/search?type=video&";
 
